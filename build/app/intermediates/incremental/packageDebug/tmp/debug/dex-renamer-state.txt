@@ -1,0 +1,4 @@
+#Sun Oct 22 16:57:33 WIB 2023
+base.0=C\:\\Users\\VAREL\\AndroidStudioProjects\\tb1login\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
