@@ -8,6 +8,28 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  // Replace these with your actual username and password.
+  final String correctUsername = 'varel';
+  final String correctPassword = 'varel';
+
+  void _login() {
+    if (usernameController.text == correctUsername &&
+        passwordController.text == correctPassword) {
+      // Navigate to the "welcome page" when the credentials are correct.
+      Navigator.pushNamed(context, 'welcome_page');
+    } else {
+      // Show an error message or handle incorrect credentials.
+      // For simplicity, we show a snackbar in this example.
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid username or password'),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,6 +56,7 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: usernameController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -47,6 +70,7 @@ class _MyLoginState extends State<MyLogin> {
                             height: 10,
                           ),
                           TextField(
+                            controller: passwordController,
                             style: TextStyle(color: Colors.black),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -64,11 +88,9 @@ class _MyLoginState extends State<MyLogin> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ElevatedButton(
-                                  onPressed: (){
-                                    Navigator.pushNamed(context, 'welcome page');
-                                  },
+                                  onPressed: _login,
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white, // Background color
+                                    backgroundColor: Colors.white,
                                   ),
                                   child: Text('Submit',
                                       style: TextStyle(
